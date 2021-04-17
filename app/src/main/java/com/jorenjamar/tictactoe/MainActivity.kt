@@ -18,17 +18,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         var rows = 0;
         var columns = 0;
+        var amountOfPositions = 0
         llField.children.forEach { row ->
             if (row is LinearLayout) {
                 rows++;
                 row.children.forEach { button ->
                     if (button is Button) {
-                        columns++;
+                        amountOfPositions++;
                         button.setOnClickListener(listenerField)
                     }
                 }
             }
         }
+        columns = amountOfPositions/rows
         btnReset.setOnClickListener(listenerReset)
         ttt = TicTacToe(rows, columns, amountOfPlayers, amountToWin)
         tvGameState.text = "It's ${ttt.selectNextPlayer()}'s turn"
