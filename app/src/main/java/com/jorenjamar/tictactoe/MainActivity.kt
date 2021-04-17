@@ -45,8 +45,9 @@ class MainActivity : AppCompatActivity() {
         var player =  ttt.selectNextPlayer();
         if(ttt.makeMove(player, col, row)){
             (view as Button).text = player.toString()
+            view.isEnabled = false
             when(ttt.gameState()){
-                GameState.WINNER -> tvGameState.text = "$player is winner"
+                GameState.WINNER -> winner(player)
                 GameState.TIE -> tvGameState.text = "it is a tie"
                 GameState.CONTINUE -> tvGameState.text = "It's ${ttt.selectNextPlayer()}'s turn"
             }
@@ -55,15 +56,33 @@ class MainActivity : AppCompatActivity() {
 
     var listenerReset = View.OnClickListener { view ->
         ttt.reset()
+        resetAllPlayingButtons()
+        tvGameState.text = "It's ${ttt.selectNextPlayer()}'s turn"
+    }
+
+    fun resetAllPlayingButtons(){
         llField.children.forEach { row ->
             if (row is LinearLayout) {
                 row.children.forEach { button ->
                     if (button is Button) {
                         button.text = ""
+                        button.isEnabled = true
                     }
                 }
             }
         }
-        tvGameState.text = "It's ${ttt.selectNextPlayer()}'s turn"
+    }
+
+    fun winner(player: Int){
+        tvGameState.text = "$player is winner"
+        llField.children.forEach { row ->
+            if (row is LinearLayout) {
+                row.children.forEach { button ->
+                    if (button is Button) {
+                        button.isEnabled = false
+                    }
+                }
+            }
+        }
     }
 }
