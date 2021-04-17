@@ -141,4 +141,26 @@ class TicTacToeTest{
         println("OK")
         println()
     }
+
+    //Check if next player alternates right
+    @Test
+    fun testSelectNextPlayer(){
+        println("Test if select player works")
+        var ttt : IGame = TicTacToe(3,3,2)
+        print("- player 0: ")
+        assertEquals(ttt.selectNextPlayer(), 0)
+        println("OK")
+        print("- player 1: ")
+        assertEquals(ttt.selectNextPlayer(), 1)
+        println("OK")
+        print("- player 0: ")
+        assertEquals(ttt.selectNextPlayer(), 0)
+        println("OK")
+        print("- player 1: ")
+        assertEquals(ttt.selectNextPlayer(), 1)
+        println("OK")
+        print("- player 0: ")
+        assertEquals(ttt.selectNextPlayer(), 0)
+        println("OK")
+    }
 }

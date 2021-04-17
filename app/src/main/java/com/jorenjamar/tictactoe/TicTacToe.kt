@@ -1,13 +1,14 @@
 package com.jorenjamar.tictactoe
 
-class TicTacToe(boardHeight: Int, boardWidth:Int, val amountOfPlayers:Int) : IGame{
+class TicTacToe(boardHeight: Int, boardWidth:Int, private val amountOfPlayers:Int) : IGame{
     private var field : Array<IntArray> = Array(boardHeight)
     {
         IntArray(boardWidth) {-1}
     }
 
+    var count = 0;
     override fun selectNextPlayer(): Int {
-        TODO("Not yet implemented")
+        return count++ % amountOfPlayers
     }
 
     override fun makeMove(player: Int, x: Int, y: Int) : Boolean {
