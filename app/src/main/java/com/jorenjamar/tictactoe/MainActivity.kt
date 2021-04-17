@@ -21,17 +21,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         var rows = 0;
         var columns = 0;
-        field.children.forEach { row ->
-            if(row is LinearLayout){
+        llField.children.forEach { row ->
+            if (row is LinearLayout) {
                 rows++;
                 row.children.forEach { button ->
-                    if(button is Button){
+                    if (button is Button) {
                         columns++;
                         button.setOnClickListener(listenerField)
                     }
                 }
             }
         }
+        btnReset.setOnClickListener(listenerReset)
         ttt = TicTacToe(rows, columns, amountOfPlayers, amountToWin)
     }
 
@@ -45,5 +46,16 @@ class MainActivity : AppCompatActivity() {
         if(ttt.makeMove(player, col, row)) (view as Button).text = player.toString()
     }
 
-
+    var listenerReset = View.OnClickListener { view ->
+        ttt.reset()
+        llField.children.forEach { row ->
+            if (row is LinearLayout) {
+                row.children.forEach { button ->
+                    if (button is Button) {
+                        button.text = ""
+                    }
+                }
+            }
+        }
+    }
 }
