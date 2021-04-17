@@ -170,4 +170,25 @@ class TicTacToeTest{
         assertEquals(ttt.selectNextPlayer(), 0)
         println("OK")
     }
+
+    //Test if reset works
+    @Test
+    fun testReset(){
+        println("Test reset:")
+        var ttt : IGame = TicTacToe(3,3,2)
+        ttt.makeMove(1,0,0)
+        ttt.makeMove(1,2,0)
+        ttt.makeMove(0,1,1)
+        ttt.makeMove(0,2,2)
+
+        ttt.reset();
+
+        for(i in 0..2){
+            for(j in 0..2){
+                print("- Test if ($i, $j) is -1: ")
+                assertEquals(ttt.getStateOfPositon(i,j), -1)
+                println("OK")
+            }
+        }
+    }
 }

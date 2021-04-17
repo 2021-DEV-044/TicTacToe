@@ -31,6 +31,8 @@ class TicTacToe(boardHeight: Int, boardWidth:Int, private val amountOfPlayers:In
     }
 
     override fun reset() {
-        TODO("Not yet implemented")
+        field.forEach {
+            it.fill(-1)
+        }
     }
 }
