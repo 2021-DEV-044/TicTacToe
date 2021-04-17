@@ -6,9 +6,12 @@ class TicTacToe(boardHeight: Int, boardWidth:Int, private val amountOfPlayers:In
         IntArray(boardWidth) {-1}
     }
 
-    var count = 0;
     override fun selectNextPlayer(): Int {
-        return count++ % amountOfPlayers
+        var amountOfPlayedFields = 0
+        field.forEach {
+            amountOfPlayedFields += it.filter { it >= 0 }.size
+        }
+        return amountOfPlayedFields % amountOfPlayers
     }
 
     override fun makeMove(player: Int, x: Int, y: Int) : Boolean {
