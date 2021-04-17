@@ -10,8 +10,12 @@ class TicTacToe(boardHeight: Int, boardWidth:Int, val amountOfPlayers:Int) : IGa
         TODO("Not yet implemented")
     }
 
-    override fun makeMove(player: Int, x: Int, y: Int) {
-        field[y][x] = player
+    override fun makeMove(player: Int, x: Int, y: Int) : Boolean {
+        if(y < field.size && x < field[0].size && field[y][x] < 0){
+            field[y][x] = player
+            return true
+        }
+        return false
     }
 
     override fun getStateOfPositon(x: Int, y: Int): Int {
