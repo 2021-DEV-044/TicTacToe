@@ -3,7 +3,7 @@ package com.jorenjamar.tictactoe
 class TicTacToe(boardHeight: Int, boardWidth:Int, val amountOfPlayers:Int) : IGame{
     private var field : Array<IntArray> = Array(boardHeight)
     {
-        IntArray(boardWidth) {0}
+        IntArray(boardWidth) {-1}
     }
 
     override fun selectNextPlayer(): Int {
