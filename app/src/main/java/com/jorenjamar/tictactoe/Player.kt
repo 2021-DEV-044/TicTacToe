@@ -1,4 +1,5 @@
 package com.jorenjamar.tictactoe
 
-class Player {
+class Player(var name: String) {
+
 }

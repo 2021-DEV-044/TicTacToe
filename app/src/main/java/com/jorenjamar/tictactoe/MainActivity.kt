@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var ttt : TicTacToe
+    lateinit var players : Array<Player>
     var amountOfPlayers = 2;
     var amountToWin = 3;
 
@@ -33,7 +34,8 @@ class MainActivity : AppCompatActivity() {
         columns = amountOfPositions/rows
         btnReset.setOnClickListener(listenerReset)
         ttt = TicTacToe(rows, columns, amountOfPlayers, amountToWin)
-        tvGameState.text = "It's ${ttt.selectNextPlayer()}'s turn"
+        players = arrayOf(Player("X"), Player("O"))
+        tvGameState.text = "It's ${players[ttt.selectNextPlayer()].name}'s turn"
     }
 
     var listenerField = View.OnClickListener { view ->
@@ -44,12 +46,12 @@ class MainActivity : AppCompatActivity() {
 
         var player =  ttt.selectNextPlayer();
         if(ttt.makeMove(player, col, row)){
-            (view as Button).text = player.toString()
+            (view as Button).text = players[player].name
             view.isEnabled = false
             when(ttt.gameState()){
-                GameState.WINNER -> winner(player)
+                GameState.WINNER -> winner(players[player].name)
                 GameState.TIE -> tvGameState.text = "it is a tie"
-                GameState.CONTINUE -> tvGameState.text = "It's ${ttt.selectNextPlayer()}'s turn"
+                GameState.CONTINUE -> tvGameState.text = "It's ${players[ttt.selectNextPlayer()].name}'s turn"
             }
         }
     }
@@ -57,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     var listenerReset = View.OnClickListener { view ->
         ttt.reset()
         resetAllPlayingButtons()
-        tvGameState.text = "It's ${ttt.selectNextPlayer()}'s turn"
+        tvGameState.text = "It's ${players[ttt.selectNextPlayer()].name}'s turn"
     }
 
     fun resetAllPlayingButtons(){
@@ -73,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun winner(player: Int){
+    fun winner(player: String){
         tvGameState.text = "$player is winner"
         llField.children.forEach { row ->
             if (row is LinearLayout) {
