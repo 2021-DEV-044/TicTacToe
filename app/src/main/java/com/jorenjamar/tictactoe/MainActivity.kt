@@ -35,23 +35,24 @@ class MainActivity : AppCompatActivity() {
         btnReset.setOnClickListener(listenerReset)
         ttt = TicTacToe(rows, columns, amountOfPlayers, amountToWin)
         players = arrayOf(Player("X"), Player("O"))
-        tvGameState.text = "It's ${players[ttt.selectNextPlayer()].name}'s turn"
+        //tvGameState.text = "It's ${players[ttt.selectNextPlayer()].name}'s turn"
+        tvGameState.text = getString(R.string.turn, players[ttt.selectNextPlayer()].name)
     }
 
     var listenerField = View.OnClickListener { view ->
-        val regexRow = Regex("R(\\d+)")
-        val regexCol = Regex("C(\\d+)")
+        val regexRow = Regex(getString(R.string.regex_row))
+        val regexCol = Regex(getString(R.string.regex_column))
         var row = (regexRow.find(view.getTag().toString()))!!.groups[1]!!.value.toInt()
         var col = (regexCol.find(view.getTag().toString()))!!.groups[1]!!.value.toInt()
 
         var player =  ttt.selectNextPlayer();
         if(ttt.makeMove(player, col, row)){
             (view as Button).text = players[player].name
-            view.isEnabled = false
+            (view as Button).isEnabled = false
             when(ttt.gameState()){
                 GameState.WINNER -> winner(players[player].name)
-                GameState.TIE -> tvGameState.text = "it is a tie"
-                GameState.CONTINUE -> tvGameState.text = "It's ${players[ttt.selectNextPlayer()].name}'s turn"
+                GameState.TIE -> tvGameState.text = getString(R.string.tie)
+                GameState.CONTINUE -> tvGameState.text = getString(R.string.turn, players[ttt.selectNextPlayer()].name)
             }
         }
     }
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
     var listenerReset = View.OnClickListener { view ->
         ttt.reset()
         resetAllPlayingButtons()
-        tvGameState.text = "It's ${players[ttt.selectNextPlayer()].name}'s turn"
+        tvGameState.text = getString(R.string.turn, players[ttt.selectNextPlayer()].name)
     }
 
     fun resetAllPlayingButtons(){
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun winner(player: String){
-        tvGameState.text = "$player is winner"
+        tvGameState.text = getString(R.string.winner, player)
         llField.children.forEach { row ->
             if (row is LinearLayout) {
                 row.children.forEach { button ->
