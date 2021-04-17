@@ -15,7 +15,7 @@ class TicTacToe(boardHeight: Int, boardWidth:Int, val amountOfPlayers:Int) : IGa
     }
 
     override fun getStateOfPositon(x: Int, y: Int): Int {
-        TODO("Not yet implemented")
+        return field[y][x]
     }
 
     override fun gameState(): GameState {
