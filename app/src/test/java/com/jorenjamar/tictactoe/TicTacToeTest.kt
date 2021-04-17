@@ -74,7 +74,7 @@ class TicTacToeTest{
         println()
     }
 
-    //Test if valid a move on a returns true
+    //Test if valid a move returns true
     @Test
     fun testMakeMoveReturnsTrue(){
         println("Test if a valid move return true:")
@@ -142,7 +142,7 @@ class TicTacToeTest{
         println()
     }
 
-    //Check if next player alternates right
+    //Test if next player alternates after a move is made
     @Test
     fun testSelectNextPlayer(){
         println("Test if select player works")
@@ -192,7 +192,7 @@ class TicTacToeTest{
         }
     }
 
-    //Test if gamestate returns continue
+    //Test if gameState() returns continue
     @Test
     fun testGameStateContinue(){
         println("Test if gameState returns continue:")
@@ -208,7 +208,7 @@ class TicTacToeTest{
         println("OK")
     }
 
-    //Test if gamestate returns tie
+    //Test if gameState() returns tie
     @Test
     fun testGameStateTie(){
         println("Test if gameState returns tie:")
@@ -229,7 +229,7 @@ class TicTacToeTest{
         println("OK")
     }
 
-    //Test if gamestate returns win
+    //Test if gameState() returns win
     @Test
     fun testGameStateWin(){
         println("Test if gameState returns win:")
