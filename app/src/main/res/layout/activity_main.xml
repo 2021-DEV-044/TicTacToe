@@ -21,10 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="casual"
-            android:text="test"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"/>
+            android:textColor="@color/colorPrimaryDark"/>
     </RelativeLayout>
 
 
