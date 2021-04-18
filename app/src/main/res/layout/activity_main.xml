@@ -1,135 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:background="@drawable/paper">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:id="@+id/relativeLayout2"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:id="@+id/tvGameState"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="30sp"/>
+            android:fontFamily="casual"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"/>
     </RelativeLayout>
+
 
     <LinearLayout
         android:id="@+id/llField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:orientation="vertical">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ttt_playing_board"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-            <Button
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageButton
                 android:id="@+id/btn1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:tag="R0C0"
-                app:srcCompat="@android:drawable/btn_star"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="30dp"
+                android:scaleType="centerCrop"
+                android:tag="R0C0" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:tag="R0C1"
-                app:srcCompat="@android:drawable/btn_star"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="30dp"
+                android:scaleType="centerCrop"
+                android:tag="R0C1" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:tag="R0C2"
-                app:srcCompat="@android:drawable/btn_star"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="30dp"
+                android:scaleType="centerCrop"
+                android:tag="R0C2" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:tag="R1C0"
-                app:srcCompat="@android:drawable/btn_star"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="30dp"
+                android:scaleType="centerCrop"
+                android:tag="R1C0" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:tag="R1C1"
-                app:srcCompat="@android:drawable/btn_star"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="30dp"
+                android:scaleType="centerCrop"
+                android:tag="R1C1" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:tag="R1C2"
-                app:srcCompat="@android:drawable/btn_star"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="30dp"
+                android:scaleType="centerCrop"
+                android:tag="R1C2" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-            <Button
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageButton
                 android:id="@+id/btn7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:tag="R2C0"
-                app:srcCompat="@android:drawable/btn_star"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="30dp"
+                android:scaleType="centerCrop"
+                android:tag="R2C0" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn8"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:tag="R2C1"
-                app:srcCompat="@android:drawable/btn_star"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="30dp"
+                android:scaleType="centerCrop"
+                android:tag="R2C1" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn9"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:tag="R2C2"
-                app:srcCompat="@android:drawable/btn_star"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="30dp"
+                android:scaleType="centerCrop"
+                android:tag="R2C2" />
 
         </LinearLayout>
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-        <Button
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
             android:id="@+id/btnReset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/reset"
-            android:textSize="15sp"/>
+            android:fontFamily="casual"
+            android:src="@drawable/eraser"
+            android:scaleType="fitCenter"
+            android:padding="20dp"/>
     </RelativeLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
