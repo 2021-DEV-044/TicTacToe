@@ -1,6 +1,10 @@
 package com.jorenjamar.tictactoe
 
-class TicTacToe(boardHeight: Int, boardWidth:Int, private val amountOfPlayers:Int, private val amountToWin:Int) : IGame{
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+class TicTacToe(private val boardHeight: Int, private val boardWidth:Int, private val amountOfPlayers:Int, private val amountToWin:Int) : IGame, Parcelable{
 
     /*the playing field with:
       - -1 for no move made on this position
