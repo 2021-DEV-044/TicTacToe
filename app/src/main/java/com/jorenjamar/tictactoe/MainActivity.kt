@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             if (row is LinearLayout) {
                 rows++;
                 row.children.forEach { button ->
-                    if (button is Button) {
+                    if (button is ImageButton) {
                         amountOfPositions++;
                         button.setOnClickListener(listenerField)
                     }
@@ -41,8 +41,11 @@ class MainActivity : AppCompatActivity() {
 
         //initialize game
         ttt = TicTacToe(rows, columns, amountOfPlayers, amountToWin)
-        players = arrayOf(Player("X"), Player("O"))
+        players = arrayOf(Player("X", R.drawable.player_x), Player("O", R.drawable.player_o))
         tvGameState.text = getString(R.string.turn, players[ttt.selectNextPlayer()].name)
+
+        btn1.setImageResource(R.drawable.player_o)
+        btn1.setImageResource(android.R.color.transparent)
     }
 
     //to work the tag of all play buttons must be of type RyCx with y the number of the row (starting from 0) and x the number of the column (starting from 0)
@@ -54,8 +57,8 @@ class MainActivity : AppCompatActivity() {
 
         var player =  ttt.selectNextPlayer();
         if(ttt.makeMove(player, col, row)){
-            (view as Button).text = players[player].name
-            (view as Button).isEnabled = false
+            (view as ImageButton).setImageResource(players[player].image)
+            (view as ImageButton).isEnabled = false
             when(ttt.gameState()){
                 GameState.WINNER -> winner(players[player].name)
                 GameState.TIE -> tvGameState.text = getString(R.string.tie)
@@ -75,8 +78,8 @@ class MainActivity : AppCompatActivity() {
         llField.children.forEach { row ->
             if (row is LinearLayout) {
                 row.children.forEach { button ->
-                    if (button is Button) {
-                        button.text = ""
+                    if (button is ImageButton) {
+                        button.setImageResource(android.R.color.transparent)
                         button.isEnabled = true
                     }
                 }
@@ -91,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         llField.children.forEach { row ->
             if (row is LinearLayout) {
                 row.children.forEach { button ->
-                    if (button is Button) {
+                    if (button is ImageButton) {
                         button.isEnabled = false
                     }
                 }

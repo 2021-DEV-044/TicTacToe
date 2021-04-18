@@ -1,5 +1,5 @@
 package com.jorenjamar.tictactoe
 
-class Player(var name: String) {
+class Player(val name: String, val image: Int) {
 
 }
