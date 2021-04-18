@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         var columns = 0;
         var amountOfPositions = 0
 
-        //add listener to all the play buttons
+        //add listener to all play buttons
         llField.children.forEach { row ->
             if (row is LinearLayout) {
                 rows++;
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         tvGameState.text = getString(R.string.turn, players[ttt.selectNextPlayer()].name)
     }
 
-    //to work the tag of all the buttons must be of type RyCx with y the number of the row and x the number of the column
+    //to work the tag of all play buttons must be of type RyCx with y the number of the row (starting from 0) and x the number of the column (starting from 0)
     var listenerField = View.OnClickListener { view ->
         val regexRow = Regex(getString(R.string.regex_row))
         val regexCol = Regex(getString(R.string.regex_column))
@@ -70,8 +70,8 @@ class MainActivity : AppCompatActivity() {
         tvGameState.text = getString(R.string.turn, players[ttt.selectNextPlayer()].name)
     }
 
+    //make all playbuttons empty and enabled
     fun resetAllPlayingButtons(){
-        //make all play buttons empty and enabled
         llField.children.forEach { row ->
             if (row is LinearLayout) {
                 row.children.forEach { button ->
@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity() {
 
     fun winner(player: String){
         tvGameState.text = getString(R.string.winner, player)
+        
         //disable all play buttons
         llField.children.forEach { row ->
             if (row is LinearLayout) {
@@ -98,13 +99,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //save game state when activity state changes
+    //save game state when acitivity state changes
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putParcelable("ttt", ttt)
     }
 
-    //restore game state when activity state changes
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         if(savedInstanceState.getParcelable<TicTacToe>("ttt") != null){
